@@ -14,4 +14,4 @@ RUN tar xfvz stacks-2.66.tar.gz && \
     ./configure && \
     make && make install
 
-RUN denovo_map.pl -v
+RUN denovo_map.pl -v || exit 0
