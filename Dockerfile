@@ -4,7 +4,8 @@ FROM ubuntu:22.04
 RUN apt-get update && apt-get install -y \
     wget \
     g++ \
-    zlib1g-dev
+    zlib1g-dev \
+    make
 
 RUN wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.66.tar.gz
 
