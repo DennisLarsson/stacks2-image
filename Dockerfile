@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.66.tar.gz
 
-RUN tar xfvz stacks-2.xx.tar.gz && \
+RUN tar xfvz stacks-2.66.tar.gz && \
     cd stacks-2.66 && \
     ./configure && \
     make && make install
