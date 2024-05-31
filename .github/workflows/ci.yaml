@@ -24,6 +24,7 @@ jobs:
         python -m unittest tests.test_parameter_optimization
 
   build:
+    needs: test
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4.1.6
