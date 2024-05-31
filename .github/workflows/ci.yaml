@@ -21,8 +21,7 @@ jobs:
 
     - name: Run tests
       run: |
-        cd tests
-        python -m unittest test_parameter_optimization.py
+        python -m unittest tests.test_parameter_optimization
 
   build:
     runs-on: ubuntu-22.04
