@@ -5,7 +5,8 @@ RUN apt-get update && apt-get install -y \
     wget \
     g++ \
     zlib1g-dev \
-    make
+    make \
+    python3
 
 RUN wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.66.tar.gz
 
@@ -15,3 +16,5 @@ RUN tar xfvz stacks-2.66.tar.gz && \
     make && make install
 
 RUN denovo_map.pl -v || exit 0
+
+COPY parameter_optimization.py /
