@@ -4,6 +4,7 @@ import multiprocessing
 import argparse
 import os
 
+
 def create_folder_names(n_val, m_val):
     stacks_folder = "stacks_m3n" + str(n_val) + "M" + str(m_val)
     pop_folder = "populations_m3n" + str(n_val) + "M" + str(m_val)
@@ -62,7 +63,6 @@ def run_optimization(cpu, args, val_m=None):
         
         results[val] = int(R80_val)
     return results
-
 
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser(description="Run denovo_map.pl and populations for different n and m values")
