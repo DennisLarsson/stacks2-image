@@ -20,8 +20,7 @@ jobs:
         python-version: 3.9
 
     - name: Run tests
-      run: |
-        python -m unittest tests.test_parameter_optimization
+      run: python -m unittest tests.test_parameter_optimization
 
   build:
     needs: test
