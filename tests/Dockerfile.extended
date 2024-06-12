@@ -1,6 +1,7 @@
 COPY tests/test_samples/ /test_samples/
 COPY tests/popmap_test /
 COPY tests/run_test.sh /
+COPY tests/expected_best_params.txt /
 
 RUN chmod +x run_test.sh
 
