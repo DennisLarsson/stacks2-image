@@ -2,6 +2,6 @@ COPY tests/test_samples/ /test_samples/
 COPY tests/popmap_test /
 COPY tests/run_test.sh /
 
-RUN chmod +x parameter_optimization.py
+RUN chmod +x run_test.sh
 
 CMD ["./run_test.sh"]
