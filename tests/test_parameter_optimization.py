@@ -12,6 +12,7 @@ class TestParameterOptimization(unittest.TestCase):
         args.min_val = 1
         args.max_val = 4
         args.popmap = "/path/to/popmap"
+        args.samples = "/path/to/samples"
         val_m = 2
 
         mock_run_denovo_map_nm.return_value = "10"
