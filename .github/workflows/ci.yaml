@@ -44,6 +44,8 @@ jobs:
         tags: param-opt-test
         cache-from: type=local,src=/tmp/.buildx-test.cache
         cache-to: type=local,dest=/tmp/.buildx-test.cache
+        push: false
+        load: true
 
     - name: Run test Docker container
       run: docker run param-opt-test
