@@ -88,7 +88,7 @@ if __name__ == "__main__":
 
     output_file = "param_vals_nm.txt"
     with open(output_file, 'w') as file:
-        file.write(str(results))
+        file.write(str(results) + "\n")
 
     results = run_optimization(cpu_count, args, val_m=best_val_m)
     results[best_val_m] = loci_best_val
@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
     output_file = "param_vals_n.txt"
     with open(output_file, 'w') as file:
-        file.write(str(results))
+        file.write(str(results) + "\n")
 
     best_params = "m3n" + str(best_val_n) + "M" + str(best_val_m)
     
