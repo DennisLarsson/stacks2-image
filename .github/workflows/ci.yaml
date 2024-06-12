@@ -27,6 +27,9 @@ jobs:
         cat Dockerfile tests/Dockerfile.extended > Dockerfile.test
         docker build -t param-opt-test -f Dockerfile.test .
 
+    - name: Run test Docker container
+      run: docker run param-opt-test
+
   build:
     needs: test
     runs-on: ubuntu-22.04
