@@ -14,6 +14,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4.1.6
 
+    - name: Set up Docker buildsx
+      uses: docker/setup-buildx-action@v3.3.0
+
+    - name: Cache test Docker layers
+      uses: actions/cache@v4.0.2
+      with:
+        path: /tmp/.buildx-test.cache
+        key: ${{ runner.os }}-test-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-test-buildx-
+    
     - name: Set up Python test environment
       uses: actions/setup-python@v5.1.0
       with:
@@ -25,7 +36,11 @@ jobs:
     - name: Build test Docker image
       run: |
         cat Dockerfile tests/Dockerfile.extended > Dockerfile.test
-        docker build -t param-opt-test -f Dockerfile.test .
+        docker build \
+          --cache-from=type=local,src=/tmp/.buildx-test.cache \
+          --cache-to=type=local,dest=/tmp/.buildx-test.cache \
+          -t param-opt-test \
+          -f Dockerfile.test .
 
     - name: Run test Docker container
       run: docker run param-opt-test
