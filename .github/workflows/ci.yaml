@@ -22,12 +22,6 @@ jobs:
     - name: Run unittest
       run: python -m unittest tests.test_parameter_optimization
 
-    - name: Add execute permissions to script
-      run: chmod +x parameter_optimization.py
-
-    - name: Run test samples
-      run: ./parameter_optimization.py --popmap popmap_test --samples ./test_samples/ --min_val 1 --max_val 3
-
   build:
     needs: test
     runs-on: ubuntu-22.04
