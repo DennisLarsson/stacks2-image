@@ -18,3 +18,5 @@ RUN tar xfvz stacks-2.66.tar.gz && \
 RUN denovo_map.pl -v || exit 0
 
 COPY parameter_optimization.py /
+
+RUN chmod +x parameter_optimization.py

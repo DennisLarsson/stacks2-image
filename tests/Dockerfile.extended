@@ -1,0 +1,6 @@
+COPY test_samples/ /test_samples
+COPY popmap_test /
+
+RUN chmod +x parameter_optimization.py
+
+CMD ["./parameter_optimization.py", "--popmap", "popmap_test", "--samples", "/test_samples/", "--min_val", "1", "--max_val", "3"]
