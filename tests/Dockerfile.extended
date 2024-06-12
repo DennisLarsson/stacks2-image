@@ -1,5 +1,5 @@
-COPY test_samples/ /test_samples
-COPY popmap_test /
+COPY tests/test_samples/ /test_samples/
+COPY tests/popmap_test /
 
 RUN chmod +x parameter_optimization.py
 
