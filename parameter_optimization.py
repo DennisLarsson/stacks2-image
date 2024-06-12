@@ -37,8 +37,8 @@ def run_denovo_map_nm(n_val, m_val, cpu_count, samples_path, popmap_path):
     
     subprocess.run(["populations", 
                     "-t", str(cpu_count), 
-                    "--in_path", stacks_folder, 
-                    "--out_path", pop_folder, 
+                    "--in-path", stacks_folder, 
+                    "--out-path", pop_folder, 
                     "--popmap", popmap_path, 
                     "-R", "0.8"], 
                     check=True)
