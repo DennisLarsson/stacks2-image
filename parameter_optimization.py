@@ -1,4 +1,5 @@
 #!/bin/python3
+
 import subprocess
 import multiprocessing
 import argparse
@@ -26,16 +27,16 @@ def run_denovo_map_nm(n_val, m_val, cpu_count, samples_path, popmap_path):
     create_directories(pop_folder)
 
     subprocess.run(["denovo_map.pl", 
-                    "-n", n_val, 
-                    "-M", m_val, 
-                    "-T", cpu_count, 
+                    "-n", str(n_val), 
+                    "-M", str(m_val), 
+                    "-T", str(cpu_count), 
                     "-o", stacks_folder, 
                     "--samples", samples_path,
                     "--popmap", popmap_path],
                     check=True)
     
     subprocess.run(["populations", 
-                    "-t", cpu_count, 
+                    "-t", str(cpu_count), 
                     "--in_path", stacks_folder, 
                     "--out_path", pop_folder, 
                     "--popmap", popmap_path, 
@@ -85,12 +86,20 @@ if __name__ == "__main__":
     best_val_m = find_best_val(results)
     loci_best_val = results[best_val_m]
 
+    output_file = "param_vals_nm.txt"
+    with open(output_file, 'w') as file:
+        file.write(str(results))
+
     results = run_optimization(cpu_count, args, val_m=best_val_m)
     results[best_val_m] = loci_best_val
     best_val_n = find_best_val(results)
+
+    output_file = "param_vals_n.txt"
+    with open(output_file, 'w') as file:
+        file.write(str(results))
 
     best_params = "m3n" + str(best_val_n) + "M" + str(best_val_m)
     
     output_file = "best_params.txt"
     with open(output_file, 'w') as file:
-        file.write(best_params)
+        file.write(best_params + "\n")
