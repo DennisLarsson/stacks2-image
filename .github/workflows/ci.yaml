@@ -33,14 +33,17 @@ jobs:
     - name: Run unittest
       run: python -m unittest tests.test_parameter_optimization
 
+    - name: create test Dockerfile
+      run: cat Dockerfile tests/Dockerfile.extended > Dockerfile.test
+
     - name: Build test Docker image
-      run: |
-        cat Dockerfile tests/Dockerfile.extended > Dockerfile.test
-        docker build \
-          --cache-from=type=local,src=/tmp/.buildx-test.cache \
-          --cache-to=type=local,dest=/tmp/.buildx-test.cache \
-          -t param-opt-test \
-          -f Dockerfile.test .
+      uses: docker/build-push-action@v5.3.0
+      with:
+        context: .
+        file: ./Dockerfile.test
+        tags: param-opt-test
+        cache-from: type=local,src=/tmp/.buildx-test.cache
+        cache-to: type=local,dest=/tmp/.buildx-test.cache
 
     - name: Run test Docker container
       run: docker run param-opt-test
