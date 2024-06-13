@@ -74,11 +74,15 @@ jobs:
       id: repo-name-lowercase
       run: echo "REPO=$(echo "${{ github.repository }}" | awk '{print tolower($0)}')" >> $GITHUB_OUTPUT
 
+    - name: Get short SHA
+      id: short-sha
+      run: echo "::set-output name=sha::$(git rev-parse --short=7 ${{ github.sha }})"
+    
     - name: Build and push Docker image
       uses: docker/build-push-action@v5.3.0
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ steps.repo-name-lowercase.outputs.REPO }}:latest
+        tags: ghcr.io/${{ steps.repo-name-lowercase.outputs.REPO }}:${GITHUB_REF#refs/heads/}-${{ steps.short-sha.outputs.sha }}
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
