@@ -1,3 +1,4 @@
+FROM stacks2 as stacks2-test
 COPY tests/test_samples/ /test_samples/
 COPY tests/popmap_test /
 COPY tests/run_test.sh /
