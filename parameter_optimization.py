@@ -98,8 +98,8 @@ if __name__ == "__main__":
     with open(output_file, 'w') as file:
         file.write(str(results) + "\n")
 
-    best_params = "m3n" + str(best_val_n) + "M" + str(best_val_m)
+    best_params_path = "stacks_m3n" + str(best_val_n) + "M" + str(best_val_m)
     
-    output_file = "best_params.txt"
+    output_file = "best_params_path.txt"
     with open(output_file, 'w') as file:
-        file.write(best_params + "\n")
+        file.write(best_params_path)
