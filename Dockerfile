@@ -6,14 +6,17 @@ RUN apt-get update && apt-get install -y \
     g++ \
     zlib1g-dev \
     make \
-    python3
+    python3 \
+&& rm -rf /var/lib/apt/lists/*
 
 RUN wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.66.tar.gz
 
 RUN tar xfvz stacks-2.66.tar.gz && \
     cd stacks-2.66 && \
     ./configure && \
-    make && make install
+    make && \
+    make install && \
+    cd .. && rm -rf stacks-2.66 stacks-2.66.tar.gz
 
 RUN denovo_map.pl -v || exit 0
 
