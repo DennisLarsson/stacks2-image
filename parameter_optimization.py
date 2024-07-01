@@ -57,7 +57,7 @@ def find_best_val(results):
     
     for i in range(len(sorted_results) - 1):
         current_value = sorted_results[i][1]
-        next_value = sorted_results[i + 1[1]]
+        next_value = sorted_results[i + 1][1]
 
         increase = ((next_value - current_value) / current_value)
 
