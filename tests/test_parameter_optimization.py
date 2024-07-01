@@ -23,11 +23,11 @@ class TestParameterOptimization(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test_find_best_val(self):
-        results = {1: 10, 2: 30, 3: 20}
+        results = {1: 50, 2: 100, 3: 110, 4: 115}
 
         result = find_best_val(results)
 
-        self.assertEqual(result, 2)
+        self.assertEqual(result, 3)
     
     def test_create_folder_names(self):
         n_val = 3
