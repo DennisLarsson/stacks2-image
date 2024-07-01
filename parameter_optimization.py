@@ -53,7 +53,19 @@ def check_R80_val(n_val, m_val):
     return R80_val
 
 def find_best_val(results):
-    return max(results, key=results.get)
+    sorted_results = sorted(results.items())
+    
+    for i in range(len(sorted_results) - 1):
+        current_value = sorted_results[i][1]
+        next_value = sorted_results[i + 1[1]]
+
+        increase = ((next_value - current_value) / current_value)
+
+        if increase < 0.05:
+            return sorted_results[i][0]
+        
+    return sorted_results[-1][0]
+
 
 def run_optimization(cpu, args, val_m=None):
     results = {}
